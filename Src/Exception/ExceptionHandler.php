@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace App\Exception;
 
 use Throwable;
 use App\Helpers\App;
 use App\Exception\ErrorMessage;
+use ErrorException;
 
 class ExceptionHandler
 {
@@ -22,7 +25,8 @@ class ExceptionHandler
         exit;
     }
 
-    public function convertWarningsAndNoticesToException(){
-        
+    public function convertWarningsAndNoticesToException($severity, $message, $file, $line)
+    {
+        throw new ErrorException($severity, $severity, $message, $file, $line);
     }
 }

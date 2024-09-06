@@ -3,8 +3,10 @@
 declare(strict_types = 1);
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/Src/Exception/exception.php';
 
-set_exception_handler([new \App\Exception\ExceptionHandler, 'handle']);
+// $db = new mysqli('localhost2', 'thiago', '', 'none');
+exit;
 
 $config = \App\Helpers\Config::get('aspp');
 
