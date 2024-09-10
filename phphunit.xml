@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit 
+    bootstrap="vendor/autoload.php"
+    color="true"
+    convertErrorsToExceptions="true"
+    convertWarningsToExceptions="true"
+    convertNoticesToExceptions="true"
+    stopOnFailure="true"
+>
+</phpunit>

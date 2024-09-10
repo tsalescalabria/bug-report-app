@@ -66,7 +66,7 @@ class Logger implements LoggerInterface
         $date = $application->getServerTime()->format('Y-m-d H:i:s');
         $env = $application->getEnvironment('');
         $logPath = $application->getLogPath('log_path');
-        $details = sprintf("%s - Level: %s - Message %s - Context: %s", $date, $level, $message, json_encode($context)) . PHP_EOL;
+        $details = sprintf("%s - Level: %s - Message: %s - Context: %s", $date, $level, $message, json_encode($context)) . PHP_EOL;
 
         $fileName = sprintf("%s/%s-%s.log", $logPath, $env, date('j.n.Y'));
 

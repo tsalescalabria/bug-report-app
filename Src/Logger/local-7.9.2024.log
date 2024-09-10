@@ -1,0 +1,7 @@
+2024-09-07 16:33:41 - Level: emergency - Message no level test - Context: []
+2024-09-07 16:33:42 - Level: emergency - Message no level test - Context: []
+2024-09-07 16:34:21 - Level: emergency - Message no level test - Context: {"exception":"emergency"}
+2024-09-07 16:34:22 - Level: emergency - Message no level test - Context: {"exception":"emergency"}
+2024-09-07 16:34:22 - Level: emergency - Message no level test - Context: {"exception":"emergency"}
+2024-09-07 16:36:41 - Level: emergency - Message: no level test - Context: {"exception":"emergency"}
+2024-09-07 16:36:41 - Level: info - Message: file created - Context: []
