@@ -12,4 +12,9 @@ class ApplicationTest extends TestCase
         self::assertInstanceOf(App::class, new App);
     }
 
+    public function test()
+    {
+        
+    }
+
 }

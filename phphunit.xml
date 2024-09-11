@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpunit 
     bootstrap="vendor/autoload.php"
-    color="true"
+    colors="true"
     convertErrorsToExceptions="true"
     convertWarningsToExceptions="true"
     convertNoticesToExceptions="true"
     stopOnFailure="true"
+
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>Tests/Unit</directory>
+        </testsuite>
+
+        <testsuite name="Functional">
+            <directory>Tests/Functional</directory>
+        </testsuite>
+    </testsuites>
+   
 >
 </phpunit>
