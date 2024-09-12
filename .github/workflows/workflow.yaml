@@ -13,6 +13,7 @@ jobs:
       - name: run install, build and test
         run: |
           composer install
+          sudo chmod -R 777 vendor/
           vendor/bin/phpunit Tests
 
 
