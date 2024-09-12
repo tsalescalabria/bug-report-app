@@ -4,7 +4,7 @@ namespace App\Exception;
 
 use App\Exception\BaseException;
 
-class InvalidLogLevelArgument implements BaseException
+class InvalidLogLevelArgument extends BaseException
 {
     
 }

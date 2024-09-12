@@ -13,7 +13,7 @@ class ErrorMessage
         $this->message = 'Something went wrong. Please try again later';
     }
 
-    public function displayMessage()
+    public function displayMessage(): String
     {
         return $this->message;
     }

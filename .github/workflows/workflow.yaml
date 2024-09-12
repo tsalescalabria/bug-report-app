@@ -17,15 +17,22 @@ jobs:
         with:
           php-version: "8.2"
           tools: composer
-          
 
+      # Install PHPStan
+      - name: Install PHPStan
+        uses: php-actions/phpstan@v3
+          
       # Install Dependencies
       - name: installing dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
+      # Run PHPUnit tests
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit Tests
 
+      # Run PHPStan tests
+      - name: Run PHPStan tests
+        run: vendor/bin/phpstan analyse Src Tests
 
 
 
