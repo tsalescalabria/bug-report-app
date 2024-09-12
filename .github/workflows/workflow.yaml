@@ -1,0 +1,20 @@
+name: Continous Integration
+
+on: [pullrequest, push]
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: installing dependencies
+        uses: php-actions/composer@v6
+      - name: run install, build and test
+        run: |
+          composer install
+          vendor/bin/phpunit Tests
+
+
+
+
