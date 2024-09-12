@@ -9,9 +9,9 @@ jobs:
     steps:
       # checkout repository
       - name: Checkout Repository
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
-       # Set up PHP
+      # Set up PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -23,12 +23,8 @@ jobs:
       - name: installing dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-
-      - name: run install, build and test
-        run: |
-          composer install
-          sudo chmod -R 777 vendor/
-          vendor/bin/phpunit Tests
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit Tests
 
 
 
