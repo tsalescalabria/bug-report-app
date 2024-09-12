@@ -20,7 +20,7 @@ jobs:
 
       # Install PHPStan
       - name: Install PHPStan
-        uses: php-actions/phpstan@v3
+        run: composer require --dev phpstan/phpstan
           
       # Install Dependencies
       - name: installing dependencies
