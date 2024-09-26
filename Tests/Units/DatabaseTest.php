@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use App\Database\Connections\MySQLConnection;
 use App\Database\Connections\PDOConnection;
 use App\Contracts\DBConnectionInterface;
+use App\Exception\MissingArgumentException;
 
 class DatabaseTest extends TestCase
 {
@@ -41,13 +42,14 @@ class DatabaseTest extends TestCase
     {
         $credentials = [];
         $PDOHandler =  (new PDOConnection($credentials))->connect();
-        // self::assertNotNull($this->PDO->getConnection());
+        self::assertNotNull($PDOHandler);
     }
 
     public function testItThrowsMissingArgumentExceptionWithWrongCredentialKeys(): void
     {
+        self::expectException(MissingArgumentException::class);
         $credentials = [];
-        $PDOHandler =  (new PDOConnection($credentials))->connect();
+        $PDOHandler =  new PDOConnection($credentials);
         // self::assertNotNull($this->PDO->getConnection());
     }
 }
