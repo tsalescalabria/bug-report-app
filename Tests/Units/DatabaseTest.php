@@ -7,6 +7,7 @@ use App\Database\Connections\MySQLConnection;
 use App\Database\Connections\PDOConnection;
 use App\Contracts\DBConnectionInterface;
 use App\Exception\MissingArgumentException;
+use App\Helpers\Config;
 
 class DatabaseTest extends TestCase
 {
@@ -30,19 +31,21 @@ class DatabaseTest extends TestCase
     //     self::assertNotFalse($this->mySql->getConnection());
     //     self::assertFalse($this->mySql->connection_error);
     // }
-
-    //pdo tests
-    public function testPDOConnectionImplementsInterface(): void
+    
+    public function testItCanConnectToDatabaseWithPdoApi(): PDOConnection
     {
-        $credentials = [];
-        self::assertInstanceOf(DBConnectionInterface::class, new PDOConnection($credentials));
-    }
-
-    public function testItCanConnectToDatabaseWithPdoApi(): void
-    {
-        $credentials = [];
+        $credentials = $this->getCredentials('pdo');
         $PDOHandler =  (new PDOConnection($credentials))->connect();
         self::assertNotNull($PDOHandler);
+        self::assertInstanceOf(DBConnectionInterface::class, $PDOHandler);
+
+        return $PDOHandler;
+    }
+
+    /** @depends testItCanConnectToDatabaseWithPdoApi */
+    public function testItIsAValidPdoConnection(DBConnectionInterface $handler): void
+    {
+        self::assertInstanceOf(\PDO::class, $handler->getConnection());
     }
 
     public function testItThrowsMissingArgumentExceptionWithWrongCredentialKeys(): void
@@ -50,6 +53,13 @@ class DatabaseTest extends TestCase
         self::expectException(MissingArgumentException::class);
         $credentials = [];
         $PDOHandler =  new PDOConnection($credentials);
-        // self::assertNotNull($this->PDO->getConnection());
+    }
+
+    private function getCredentials(string $type): array
+    {
+        return array_merge(
+            Config::get('database', $type),
+            ['db_name' => 'bug_app_testing']
+        );
     }
 }
