@@ -6,8 +6,8 @@ use App\Exception\MissingArgumentException;
 
 abstract class AbstractConnection
 {
-    private $credentials;
-    private $connection;
+    protected $credentials;
+    protected $connection;
 
     const REQUIRED_CONNECTION_KEYS = [];
 
@@ -31,4 +31,6 @@ abstract class AbstractConnection
         
         return count($matches) === count(static::REQUIRED_CONNECTION_KEYS);
     }
+
+    abstract protected function parseCredentials(array $credentials): array;
 }
