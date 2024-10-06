@@ -21,8 +21,7 @@ class PDOConnection extends AbstractConnection implements DBConnectionInterface
     public function connect(): PDOConnection
     {
         $credentials = $this->parseCredentials($this->credentials);
-        var_dump($credentials);
-        die();
+
         try {
             $this->connection = new PDO(...$credentials);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -37,7 +36,7 @@ class PDOConnection extends AbstractConnection implements DBConnectionInterface
         return $this;
     }
 
-    public function getConnection()
+    public function getConnection(): PDO
     {
         return $this->connection;
     }
